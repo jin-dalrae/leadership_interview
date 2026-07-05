@@ -23,7 +23,9 @@ export function useWritingScroll(
   useEffect(() => {
     const el = ref.current
     const trigger = sectionRef?.current
+    console.log('[useWritingScroll]', { scroll, hasEl: !!el, hasTrigger: !!trigger })
     if (!el || !trigger || scroll === 'none') return
+    console.log('[useWritingScroll] tween created for', scroll)
 
     const preset = PRESETS[scroll]
     const rotate = options?.rotate ?? preset.rotate

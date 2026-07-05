@@ -5,6 +5,7 @@ import { HtmlContent } from './HtmlContent'
 interface ShaderPageSceneProps {
   shaderId: string
   scrollProgress: number
+  scrollVelocity?: number
   shaderOpacity?: number
   paused?: boolean
   immersive?: boolean
@@ -15,6 +16,7 @@ interface ShaderPageSceneProps {
 export function ShaderPageScene({
   shaderId,
   scrollProgress,
+  scrollVelocity = 0,
   shaderOpacity = 1,
   paused = false,
   immersive = false,
@@ -26,6 +28,7 @@ export function ShaderPageScene({
       <ShaderBackground
         shaderId={shaderId}
         scrollProgress={scrollProgress}
+        scrollVelocity={scrollVelocity}
         opacity={shaderOpacity}
         paused={paused}
       />

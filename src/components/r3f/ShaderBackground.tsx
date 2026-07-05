@@ -6,6 +6,7 @@ import { getShader } from '../../shaders/registry'
 interface ShaderBackgroundProps {
   shaderId: string
   scrollProgress?: number
+  scrollVelocity?: number
   opacity?: number
   paused?: boolean
 }
@@ -13,6 +14,7 @@ interface ShaderBackgroundProps {
 export function ShaderBackground({
   shaderId,
   scrollProgress = 0,
+  scrollVelocity = 0,
   opacity = 1,
   paused = false,
 }: ShaderBackgroundProps) {
@@ -29,6 +31,7 @@ export function ShaderBackground({
       uMouse: { value: new THREE.Vector2(0.5, 0.5) },
       uResolution: { value: new THREE.Vector2(size.width, size.height) },
       uScrollProgress: { value: 0 },
+      uScrollVelocity: { value: 0 },
     }
 
     return new THREE.ShaderMaterial({
@@ -45,6 +48,7 @@ export function ShaderBackground({
 
     material.uniforms.uTime.value = state.clock.elapsedTime
     material.uniforms.uScrollProgress.value = scrollProgress
+    material.uniforms.uScrollVelocity.value = scrollVelocity
     mouse.current.x += (pointer.x * 0.5 + 0.5 - mouse.current.x) * 0.08
     mouse.current.y += (-pointer.y * 0.5 + 0.5 - mouse.current.y) * 0.08
     material.uniforms.uMouse.value.copy(mouse.current)
