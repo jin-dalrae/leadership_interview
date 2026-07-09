@@ -21,7 +21,7 @@ export function ShaderPage({
   id,
 }: ShaderPageProps) {
   const sectionRef = useRef<HTMLElement>(null)
-  const { progress, visible } = useSectionScroll(sectionRef)
+  const { progress, visible, velocity } = useSectionScroll(sectionRef)
 
   const isImmersive = mode === 'immersive'
   const alignClass = `shader-page--align-${align}`
@@ -51,6 +51,7 @@ export function ShaderPage({
         <ShaderPageScene
           shaderId={shaderId}
           scrollProgress={progress}
+          scrollVelocity={velocity}
           shaderOpacity={shaderOpacity}
           paused={!visible}
           immersive={isImmersive}

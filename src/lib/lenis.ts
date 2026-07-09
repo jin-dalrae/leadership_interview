@@ -1,6 +1,13 @@
 import Lenis from 'lenis'
 import { gsap, ScrollTrigger } from './gsap'
 
+declare global {
+  interface Window {
+    __lenisPrevScroll?: number
+    __lenisVelocity?: number
+  }
+}
+
 let lenis: Lenis | null = null
 let tickerFn: ((time: number) => void) | null = null
 
@@ -14,6 +21,13 @@ export function initLenis(): Lenis {
   })
 
   lenis.on('scroll', ScrollTrigger.update)
+  lenis.on('scroll', () => {
+    const current = window.scrollY
+    const prev = window.__lenisPrevScroll ?? current
+    window.__lenisPrevScroll = current
+    const delta = current - prev
+    window.__lenisVelocity = delta / 16
+  })
 
   ScrollTrigger.scrollerProxy(document.documentElement, {
     scrollTop(value) {

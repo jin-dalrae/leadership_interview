@@ -1,8 +1,10 @@
 import groupPhoto from '../assets/interview/Image_20260618_162424_880.jpeg'
 import soloPhoto from '../assets/interview/Image_20260618_162424_586.jpeg'
 import { useEffect } from 'react'
+import { HeroArt } from '../components/hero/HeroArt'
 import { ClosingSummary } from '../components/interview/ClosingSummary'
 import { ConversationAct } from '../components/interview/Conversation'
+import { GlobalColorScroll } from '../components/interview/GlobalColorScroll'
 import { PassageRow } from '../components/interview/PassageRow'
 import { ScrollProgress } from '../components/interview/ScrollProgress'
 import { PageStack, ShaderPage } from '../components/r3f'
@@ -72,6 +74,7 @@ export function InterviewJason() {
 
   return (
     <main className="interview">
+      <GlobalColorScroll />
       <ScrollProgress />
 
       <nav className="interview-nav" aria-label="Interview sections">
@@ -100,12 +103,16 @@ export function InterviewJason() {
           mode="layered"
           height="100vh"
           align="center"
-          shaderOpacity={1}
+          shaderOpacity={0}
           contentClassName="interview-hero-layered"
         >
+          <HeroArt />
           <div className="r3f-html-content hero-page">
-            <Writing playOnMount as="p" variant="eyebrow" motion="char-stagger">
+            <Writing playOnMount as="p" variant="eyebrow" motion="char-stagger" className="hero-eyebrow-large">
               Leadership Interview
+            </Writing>
+            <Writing playOnMount as="p" variant="eyebrow" motion="char-stagger">
+              Interviewers: {INTERVIEW_META.interviewers.join(' & ')}
             </Writing>
             <Writing
               playOnMount
@@ -113,7 +120,8 @@ export function InterviewJason() {
               variant="title"
               motion="split-reveal"
               scroll="rotate"
-              scrollOptions={{ rotate: [-2, 3] }}
+              scrollOptions={{ rotate: [-25, 25] }}
+              className="hero-title-font"
             >
               {INTERVIEW_META.subject}
             </Writing>
@@ -123,12 +131,11 @@ export function InterviewJason() {
             <Writing
               playOnMount
               as="p"
-              variant="body"
+              variant="lede"
               motion="line-reveal"
               className="interview-hero__note"
             >
-              Motion, shaders, and writing that moves — flanking a conversation we didn&apos;t want
-              to over-edit.
+              &ldquo;AI can be the hands. Curiosity, and the taste it feeds, is the direction. And the direction was always the part worth anything.&rdquo;
             </Writing>
           </div>
         </ShaderPage>

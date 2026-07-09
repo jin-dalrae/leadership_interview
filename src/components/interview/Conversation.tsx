@@ -1,5 +1,8 @@
 import type { CSSProperties } from 'react'
 import type { Act } from '../../content/jason-interview'
+import { TypewriterText } from './TypewriterText'
+
+const SUBJECT_SPEAKER = 'Jason'
 
 export function ConversationAct({ act }: { act: Act }) {
   return (
@@ -17,7 +20,11 @@ export function ConversationAct({ act }: { act: Act }) {
             style={{ '--turn-i': i } as CSSProperties}
           >
             <span className="turn__speaker">{turn.speaker}</span>
-            <span className="turn__text">{turn.text}</span>
+            {turn.speaker === SUBJECT_SPEAKER ? (
+              <TypewriterText text={turn.text} className="turn__text turn__text--typed" />
+            ) : (
+              <span className="turn__text turn__text--question">{turn.text}</span>
+            )}
           </p>
         ))}
       </div>
