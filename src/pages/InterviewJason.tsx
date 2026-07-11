@@ -78,11 +78,11 @@ export function InterviewJason() {
       <ScrollProgress />
 
       <nav className="interview-nav" aria-label="Interview sections">
-        <a href="/" className="interview-nav__home">
+        <a href={import.meta.env.BASE_URL} className="interview-nav__home">
           {INTERVIEW_META.subject}
         </a>
         {NAV.map((item) => (
-          <a key={item.id} href={`/#${item.id}`} className="interview-nav__link">
+          <a key={item.id} href={`${import.meta.env.BASE_URL}#${item.id}`} className="interview-nav__link">
             {item.label}
           </a>
         ))}

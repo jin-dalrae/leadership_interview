@@ -27,7 +27,7 @@ export function ClosingPage() {
         The best design leaders don&apos;t just critique screens — they redesign how their
         organization pays attention.
       </Writing>
-      <a className="page-cta" href="/catalog#hero">
+      <a className="page-cta" href={`${import.meta.env.BASE_URL}catalog#hero`}>
         Back to top
       </a>
     </ShaderPage>

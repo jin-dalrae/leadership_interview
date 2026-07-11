@@ -29,7 +29,7 @@ export function Catalog() {
       <nav className="catalog-nav" aria-label="Catalog sections">
         <span className="catalog-nav__brand">Catalog</span>
         {NAV.map((item) => (
-          <a key={item.id} href={`/catalog#${item.id}`} className="catalog-nav__link">
+          <a key={item.id} href={`${import.meta.env.BASE_URL}catalog#${item.id}`} className="catalog-nav__link">
             {item.label}
           </a>
         ))}
@@ -73,7 +73,7 @@ export function Catalog() {
               <span>shaders</span>
             </div>
           </div>
-          <a href="/catalog#pages" className="page-cta">
+          <a href={`${import.meta.env.BASE_URL}catalog#pages`} className="page-cta">
             Start scrolling
           </a>
         </ShaderPage>
